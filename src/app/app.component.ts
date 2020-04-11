@@ -1,10 +1,18 @@
 import { Component } from '@angular/core';
+import { AuthService } from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'currency-exchange-rates-app';
+  constructor(public authService: AuthService) { }
+
+  onSubmit() {
+    this.authService.logout()
+  }
+
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn()
+  }
 }

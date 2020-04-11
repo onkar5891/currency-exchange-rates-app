@@ -1,0 +1,23 @@
+<div class="container">
+    <div *ngIf="erroneousResponse">
+        <h2 class="badge badge-pill badge-danger">Error while fetching currency exchange rates</h2>
+    </div>
+    <div *ngIf="rates?.rates">
+        <h2 class="badge badge-pill badge-primary">Latest currency exchange rate per {{rates?.base}}</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Rate Code</th>
+                    <th scope="col">Rate Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let rate of rates?.rates">
+                    <td>{{rate['code']}}</td>
+                    <td>{{rate['value']}}</td>
+                </tr>
+                <tr *ngIf="rates?.rates?.length == 0" aria-colspan="2">No information available.</tr>
+            </tbody>
+        </table>
+    </div>
+</div>
